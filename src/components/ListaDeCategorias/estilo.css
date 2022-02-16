@@ -1,0 +1,24 @@
+.lista-categorias {
+    display: flex;   
+    place-content: space-between;
+    background-color: beige;
+}
+
+.lista-categorias_lista {
+    display: flex;
+    padding: 10px;
+}
+
+.lista-categorias_item {
+    padding: 4px 12px;
+    border: 1px solid green;
+    margin: 0px 10px;
+    border-radius: 8px;
+    background-color: chartreuse;
+}
+
+.lista-categorias_input {
+    border: 2px dashed coral;
+    border-radius: 8px;
+    color: blue;
+}
