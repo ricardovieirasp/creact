@@ -8,7 +8,23 @@ class FormularioCadastro extends Component {
         this.titulo = "";
         this.nota = "";
         this.categoria = "Sem Categoria";
+        this.state = {categorias:[]};
+
+        this._novasCat = this._novasCategorias.bind(this);
     }
+
+    componentDidMount() {
+        this.props.categorias.inscrever(this._novasCat);
+    }
+
+    componentWillUnmount() {
+        this.props.categorias.desinscrever(this._novasCat);
+    }
+
+    _novasCategorias(categorias){
+        this.setState({...this.state, categorias});
+    }
+
 
     _handleMudancaTitulo(evento)  {
         evento.stopPropagation();
@@ -38,9 +54,14 @@ class FormularioCadastro extends Component {
                   onSubmit={this._criarNota.bind(this)}
              >
 
-                <select className="form-cadastro_input" onChange={this._handleMudancaCategoria.bind(this)}>
+                <select 
+                    className="form-cadastro_input" 
+                    onChange={this._handleMudancaCategoria.bind(this)}
+                >
+
                     <option value="Sem Categoria">Sem Categoria</option>
-                    {this.props.categorias.map((categoria,index) => {
+
+                    {this.state.categorias.map((categoria,index) => {
                         return <option key={index} value={categoria}>{categoria}</option>
                     })}
                 </select>
